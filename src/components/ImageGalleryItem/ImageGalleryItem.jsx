@@ -57,8 +57,8 @@ export class ImageGalleryItem extends Component {
     }
 
         render() {
-            const { images, status, error } = this.state;
-            const { request } = this.props;
+            const { images, status,} = this.state;
+            // const { request } = this.props;
             if (status === 'idle') {
                 return <div> 'Введіть запит у поле пошуку' </div>
             }
@@ -76,6 +76,9 @@ export class ImageGalleryItem extends Component {
                         ))}</>   
                 
                     )}
+                    if (status === 'error') {
+                        return <div> Шеф, всьо пропало!!! </div>
+                    }
 
         }
     }
