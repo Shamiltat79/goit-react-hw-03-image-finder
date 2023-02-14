@@ -1,12 +1,15 @@
 
 import { Component } from 'react';
 import styled from 'styled-components';
-// import axios from 'axios';
+
 
 import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
 import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallary';
- 
+import { Loadbutton } from './Button/Button';
+
+
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -22,8 +25,9 @@ export class App extends Component {
   state = {
     gallery: null,
     request: '',
-    page: 1,
     perPage: 12,
+    page: 1,
+    
   }
    
  handleFormSubmit = request => {
@@ -31,8 +35,14 @@ export class App extends Component {
    console.log(this.state.request)
   }
     
+handleButtonClick = async () =>{
+this.setState((prevState) => ({page: prevState.page + 1}))
 
-  
+}
+
+
+
+// handleFetch = async ()
   
 
   render() {
@@ -40,9 +50,12 @@ export class App extends Component {
       <Container>
         <SearchBar onSubmit={this.handleFormSubmit} />
         <ImageGallery>
-          <ImageGalleryItem request = {this.state.request} page = {this.state.page} perPage = {this.state.perPage} />
-        </ImageGallery>
+          <ImageGalleryItem request = {this.state.request} page = {this.state.page} perPage = {this.state.perPage} largeImage = {this.state.largeImage}></ImageGalleryItem> 
 
+        </ImageGallery>
+        {/* <Loader2 /> */}
+        {<Loadbutton onClick={this.handleButtonClick}/>}  
+        
      </Container>
       
     );
@@ -50,5 +63,5 @@ export class App extends Component {
        
 }
   
- 
+// this.state.page > 1 && 
        

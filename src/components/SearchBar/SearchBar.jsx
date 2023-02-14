@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from 'components/SearchBar/SearchBar.module.css';
 import { ImSearch } from 'react-icons/im';
-
+import PropTypes from 'prop-types';
 
 
 
@@ -35,18 +35,20 @@ toast.warning("Please enter search query")
         return (
             <header className={css.Searchbar}>
             <form className={css.SearchForm} onSubmit={this.handleSubmit}>
+
+            <button type="submit" className={css.SearchFormButton}>
+                <ImSearch/>
+         
+        </button>     
       
         <input className={css.SearchFormInput}
           type="text"
-          placeholder="Type to search..."
+          placeholder="Search images..."
           value={searchQuery}
           onChange={this.handleChange}
         />
 
-              <button type="submit" className={css.SearchFormButton}>
-                <ImSearch/>
-          Search
-        </button>
+        
             </form> 
             <ToastContainer
             theme="colored"/>
@@ -56,3 +58,9 @@ toast.warning("Please enter search query")
    
  
 }
+
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+}
+
