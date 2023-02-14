@@ -60,7 +60,7 @@ openModal = (event) => {
     }   
 
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, ) {
 
         const prevRequest = prevProps.request;
         const nextRequest = this.props.request;
