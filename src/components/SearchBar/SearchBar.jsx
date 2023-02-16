@@ -10,12 +10,13 @@ import PropTypes from 'prop-types';
 export class SearchBar extends Component {
     state = {
     searchQuery: '',
+   
     };
 
     handleChange = (event) => {
     
       this.setState({ searchQuery: event.currentTarget.value.toLowerCase()});
-        // console.log(this.state.searchQuery);
+      
     };
 
     handleSubmit = (event) => {
@@ -32,6 +33,7 @@ toast.warning("Please enter search query")
 
     render() {
         const { searchQuery} = this.state;
+        // console.log(searchQuery); 
         return (
             <header className={css.Searchbar}>
             <form className={css.SearchForm} onSubmit={this.handleSubmit}>
