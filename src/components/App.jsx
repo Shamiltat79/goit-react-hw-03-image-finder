@@ -111,7 +111,8 @@ toast.error(`No image by ${request} request`)
         </ImageGallery>
         
        {this.state.largeImage && <Modal closeModal={this.closeModal} largeImage={this.state.largeImage}/>}
-        {this.state.images.length < 12 ? null : <Loadbutton onClick={this.handleButtonClick}/>}     
+        {(this.state.page * this.state.perPage) >= this.state.totalHits ? null : <Loadbutton onClick={this.handleButtonClick}/>}  
+        {/* {this.state.images.length < 12 ? null : <Loadbutton onClick={this.handleButtonClick}/> }     */}
      </Container>
       
     );
