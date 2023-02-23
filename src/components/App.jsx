@@ -70,15 +70,15 @@ handleButtonClick = async () =>{
 
 
       if (prevRequest !== nextRequest || prevState.page !== page) {
-          this.setState({ isLoader: true });
-          this.setState({request: nextRequest});
+          this.setState({ isLoader: true, request: nextRequest});
+         
           console.log(nextRequest)
           try {
             
             const {data} = await axios.get(`https://pixabay.com/api/?q=${nextRequest}&page=${page}&key=33196746-3c53ba3d329df844fee4c0829&image_type=photo&orientation=horizontal&per_page=12`)
             
-            this.setState((prevState) => ({images: [...prevState.images, ...data.hits]}))
-            this.setState({ total: data.total, totalHits: data.totalHits, largeImage: data.hits.largeImageURL })  
+            this.setState((prevState) => ({images: [...prevState.images, ...data.hits], total: data.total, totalHits: data.totalHits, largeImage: data.hits.largeImageURL  }))
+             
                     
           if (data.totalHits === 0) { 
             this.setState({image: []}) 
